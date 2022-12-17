@@ -1,4 +1,4 @@
-import { GenreResponseProps } from "./GenreResponseProps";
+import { GenreResponseProps } from "./genreResponseProps";
 
 export interface ContentProps {
     selectedGenreId: number;

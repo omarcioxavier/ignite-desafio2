@@ -1,14 +1,21 @@
-import { useState } from 'react';
-import './styles/global.scss';
-import './styles/sidebar.scss';
-import './styles/content.scss';
+import { useEffect, useState } from 'react';
 import { SideBar } from './components/SideBar';
 import { Content } from './components/Content';
 import { GenreResponseProps } from './genreResponseProps';
+import { api } from './services/api';
+import './styles/global.scss';
+import './styles/sidebar.scss';
+import './styles/content.scss';
 
 export function App() {
   const [selectedGenreId, setSelectedGenreId] = useState(1);
-  const [selectedGenre] = useState<GenreResponseProps>({} as GenreResponseProps);
+  const [selectedGenre, setSelectedGenre] = useState<GenreResponseProps>({} as GenreResponseProps);
+
+  useEffect(() => {
+    api.get<GenreResponseProps>(`genres/${selectedGenreId}`).then(response => {
+      setSelectedGenre(response.data);
+    });
+  }, [selectedGenreId]);
 
   function handleClickButton(id: number) {
     setSelectedGenreId(id);
