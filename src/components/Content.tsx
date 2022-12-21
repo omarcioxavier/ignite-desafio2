@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from '../services/api';
 import { MovieCard } from "./MovieCard";
-import { MovieProps } from "../MovieProps";
+import { MovieProps } from "../movieProps";
 import { ContentProps } from "../contentProps";
 
 export function Content({ selectedGenreId, selectedGenre }: ContentProps) {
